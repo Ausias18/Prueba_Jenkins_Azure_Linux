@@ -2,11 +2,6 @@ pipeline {
   agent any
   
   stages {
-	stage('Install') {
-      steps {
-        bin: '/terraform'
-      }
-    }
 	stage('TF Plan') {
        steps {
            sh 'terraform init'
@@ -22,9 +17,7 @@ pipeline {
     }
 	stage('TF Apply') {
       steps {
-        container('terraform') {
           sh 'terraform apply -input=false myplan'
-        }
       }
     }
   }
