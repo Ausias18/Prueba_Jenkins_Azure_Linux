@@ -13,7 +13,6 @@ pipeline {
         }
       }
     }
-    }
 	stage('TF Plan') {
        steps {
            sh 'terraform init'
