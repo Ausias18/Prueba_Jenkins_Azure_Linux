@@ -2,13 +2,6 @@ pipeline {
   agent any
   
   stages {
-  stage('Checkout') {
-      steps {
-        checkout scm
-        sh 'mkdir -p creds'
-        sh 'echo $SVC_ACCOUNT_KEY | base64 -d > ./creds/serviceaccount.json'
-      }
-    }
 	stage('TF Plan') {
        steps {
          container('terraform') {
