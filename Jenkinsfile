@@ -5,7 +5,7 @@ pipeline {
 	stage('install'){
 		steps{ 
       downloadTerraform()
-      env.PATH = "C:/Terraform/terraform.exe"
+      PATH = "C:/Terraform/terraform.exe"
 		}
     }
 	stage('TF Plan') {
