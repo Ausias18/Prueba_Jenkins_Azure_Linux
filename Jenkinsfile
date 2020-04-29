@@ -2,6 +2,10 @@ pipeline {
   agent any
   
   stages {
+	stage('install'){
+      downloadTerraform()
+      env.PATH = "${env.PATH}:${env.WORKSPACE}"
+    }
 	stage('TF Plan') {
        steps {
 	   cd c:\terraform
