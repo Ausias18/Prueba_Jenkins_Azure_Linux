@@ -4,13 +4,7 @@ pipeline {
   stages {
 	stage('Install') {
       steps {
-        script {
-          terraform.install(
-            version:      '0.12.18',
-            install_path: '/tmp',
-            platform:     'windows'
-          )
-        }
+        dir: 'c:/terraform/terraform.exe'
       }
     }
 	stage('TF Plan') {
