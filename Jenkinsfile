@@ -2,7 +2,12 @@ pipeline {
   agent any
   
   stages {
-	stage('TF Plan') {
+	  stage('inicializacion') {
+		  steps {
+		  powershell 'cd c:\terraform'
+		  }
+	  }
+        stage('TF Plan') {
        steps {
            powershell 'terraform init'
            powershell 'terraform plan -out myplan'
