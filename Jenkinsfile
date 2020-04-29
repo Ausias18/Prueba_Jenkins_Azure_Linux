@@ -4,7 +4,7 @@ pipeline {
   stages {
 	stage('Install') {
       steps {
-        dir: 'c:/terraform/terraform.exe'
+        dir: c:/terraform/terraform.exe
       }
     }
 	stage('TF Plan') {
