@@ -4,8 +4,8 @@ pipeline {
   stages {
 	stage('TF Plan') {
        steps {
-           sh 'terraform init'
-           sh 'terraform plan -out myplan'
+           powershell 'terraform init'
+           powershell 'terraform plan -out myplan'
        }
      }
 	 stage('Approval') {
