@@ -9,13 +9,13 @@ pipeline {
 	  }
         stage('TF Plan') {
        steps {
-           powershell 'terraform init'
-           powershell 'terraform plan -out myplan'
+           powershell 'c:\\terraform\\terraform.exe init'
+           powershell 'c:\\terraform\\terraform.exe plan -out myplan'
        }
      }
 	stage('TF Apply') {
       steps {
-          powershell 'terraform apply -input=false myplan'
+          powershell 'c:\\terraform\\terraform.exe apply -input=false myplan'
       }
     }
   }
