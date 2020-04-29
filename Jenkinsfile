@@ -4,7 +4,7 @@ pipeline {
   stages {
 	  stage('inicializacion') {
 		  steps {
-		  powershell 'cd c:\\terraform\\'
+		  powershell 'c:\\terraform\\'
 		  }
 	  }
         stage('TF Plan') {
