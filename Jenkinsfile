@@ -2,11 +2,17 @@ pipeline {
   agent any
   
   stages {
-	stage('install'){
-		steps{ 
-      downloadTerraform()
-      PATH = "C:/Terraform/terraform.exe"
-		}
+	stage('Install') {
+      steps {
+        script {
+          terraform.install(
+            version:      '0.12.18',
+            install_path: '/tmp',
+            platform:     'windows'
+          )
+        }
+      }
+    }
     }
 	stage('TF Plan') {
        steps {
