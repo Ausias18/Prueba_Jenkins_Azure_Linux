@@ -8,7 +8,6 @@ pipeline {
     }
 	stage('TF Plan') {
        steps {
-	   cd c:\terraform
            sh '.\terraform init'
            sh '.\terraform plan -out myplan'
        }
