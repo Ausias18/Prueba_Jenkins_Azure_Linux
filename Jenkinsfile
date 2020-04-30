@@ -15,7 +15,8 @@ pipeline {
     }
 	  stage('TF Configure') {
 		  steps { 
-			  ansible-playbook -i inventory.yml -s iis-ansible.yml
+			powershell  'ansible-playbook -i inventory.yml -s iis-ansible.yml'
 		  }
 	  }
+  }
 }
