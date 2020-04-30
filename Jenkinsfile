@@ -4,13 +4,13 @@ pipeline {
   stages {
         stage('TF Plan') {
        steps {
-           sh 'usr/loca/bin/terraform init'
-           sh 'usr/loca/bin/terraform plan -out myplan'
+           sh 'usr/local/bin/terraform init'
+           sh 'usr/local/bin/terraform plan -out myplan'
        	      }
      			}
 	  stage('TF Apply') {
       steps {
-         sh 'usr/loca/bin/terraform apply -input=false myplan'
+         sh 'usr/local/bin/terraform apply -input=false myplan'
 	    }
  	 		     }
          }
