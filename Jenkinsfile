@@ -9,13 +9,13 @@ pipeline {
        }
      }
 	stage('TF Apply') {
-      steps {
-          powershell 'c:\\terraform\\terraform.exe apply -input=false myplan'
+#      steps {
+#         powershell 'c:\\terraform\\terraform.exe apply -input=false myplan'
       }
     }
 	  stage('TF Configure') {
 		  steps { 
-			powershell  'ansible-playbook -i inventory.yml -s iis-ansible.yml'
+			ansiblePlaybook inventory: 'inventory.yml', playbook: 'iis-ansible.yml'
 		  }
 	  }
   }
