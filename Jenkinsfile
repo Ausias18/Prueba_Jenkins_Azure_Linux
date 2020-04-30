@@ -4,13 +4,13 @@ pipeline {
   stages {
         stage('TF Plan') {
        steps {
-           powershell 'c:\\terraform\\terraform.exe init'
-           powershell 'c:\\terraform\\terraform.exe plan -out myplan'
+           sh 'usr/loca/bin/terraform init'
+           sh 'usr/loca/bin/terraform plan -out myplan'
        	      }
      			}
 	  stage('TF Apply') {
       steps {
-         powershell 'c:\\terraform\\terraform.exe apply -input=false myplan'
+         sh 'usr/loca/bin/terraform apply -input=false myplan'
 	    }
  	 		     }
          }
