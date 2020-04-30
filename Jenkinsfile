@@ -2,6 +2,10 @@ pipeline {
   agent any
   
   stages {
+	  stage ('quien soy') {
+		  steps {
+		  sh 'whoami'
+		  }}
         stage('TF Plan') {
        steps {
            sh 'terraform init'
