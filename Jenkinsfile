@@ -13,10 +13,5 @@ pipeline {
          powershell 'c:\\terraform\\terraform.exe apply -input=false myplan'
 	    }
  	 		     }
-	  stage('TF Configure') {
-		  steps { 
-			ansiblePlaybook inventory: 'inventory.yml', playbook: 'iis-ansible.yml'
-		       }
-	  			}
          }
 	 }
