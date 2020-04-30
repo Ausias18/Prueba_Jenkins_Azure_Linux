@@ -4,9 +4,8 @@ pipeline {
   stages {
         stage('TF Plan') {
        steps {
-	   sh 'usr/local/bin'
-           sh './terraform init'
-           sh './terraform plan -out myplan'
+           sh 'terraform init'
+           sh 'terraform plan -out myplan'
        	      }
      			}
 	  stage('TF Apply') {
