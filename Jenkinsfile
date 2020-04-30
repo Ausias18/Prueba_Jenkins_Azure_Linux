@@ -9,8 +9,7 @@ pipeline {
        }
      }
 	stage('TF Apply') {
-#      steps {
-#         powershell 'c:\\terraform\\terraform.exe apply -input=false myplan'
+
       }
     }
 	  stage('TF Configure') {
