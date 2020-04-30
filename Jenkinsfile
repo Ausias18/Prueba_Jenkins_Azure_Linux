@@ -17,5 +17,6 @@ pipeline {
 		  steps { 
 			  ansible-playbook -i inventory.yml -s iis-ansible.yml
 		  }
+	  }
   }
 }
