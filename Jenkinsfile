@@ -8,13 +8,10 @@ pipeline {
            powershell 'c:\\terraform\\terraform.exe plan -out myplan'
        }
      }
-	stage('TF Apply') {
-
-      }
-    }
 	  stage('TF Configure') {
 		  steps { 
 			ansiblePlaybook inventory: 'inventory.yml', playbook: 'iis-ansible.yml'
 		  }
 	  }
   }
+}
