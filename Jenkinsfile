@@ -13,5 +13,9 @@ pipeline {
           powershell 'c:\\terraform\\terraform.exe apply -input=false myplan'
       }
     }
+	  stage('TF Configure') {
+		  steps { 
+			  ansible-playbook -i inventory -s file 
+		  }
   }
 }
