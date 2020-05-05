@@ -99,7 +99,9 @@ storage_image_reference {
   os_profile_windows_config {
   }
   
-  resource "azurerm_virtual_machine_extension" "example" {
+  }
+  
+  resource "azurerm_virtual_machine_extension" "main" {
   name                 = "WinRm"
   virtual_machine_id   = azurerm_virtual_machine.main.id
   publisher            = "Microsoft.Azure.Extensions"
