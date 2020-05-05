@@ -57,6 +57,14 @@ resource "azurerm_network_interface_security_group_association" "main" {
   network_security_group_id = azurerm_network_security_group.main.id
 }
 
+resource "azurerm_public_ip" "main" {
+  name                = "SantaluciaPIP"
+  location            = "westeurope"
+  resource_group_name = azurerm_resource_group.main.name
+  allocation_method   = "Static"
+  domain_name_label   = "santalucia-azurerm-resource"
+}
+
 resource "azurerm_virtual_machine" "main" {
   name                  = "${var.prefix}-vm"
   location              = azurerm_resource_group.main.location
