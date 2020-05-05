@@ -33,6 +33,29 @@ ip_configuration {
   }
 }
 
+resource "azurerm_network_security_group" "main" {
+  name                = "winrm-nsg"
+  location            = azurerm_resource_group.winrm-nsg.location
+  resource_group_name = azurerm_resource_group.winrm-nsg.name
+}
+
+resource "azure_security_group_rule" "main" {
+  name                       = "winrm-access-rule"
+  security_group_names       = ["${azure_security_group.web.name}", "${azure_security_group.apps.name}"]
+  type                       = "Inbound"
+  action                     = "Allow"
+  priority                   = 200
+  source_address_prefix      = "*"
+  source_port_range          = "*"
+  destination_address_prefix = "*"
+  destination_port_range     = "5985, 5986"
+  protocol                   = "TCP"
+}
+
+resource "azurerm_network_interface_security_group_association" "main" {
+  network_interface_id      = azurerm_network_interface.main.id
+  network_security_group_id = azurerm_network_security_group.main.id
+}
 
 resource "azurerm_virtual_machine" "main" {
   name                  = "${var.prefix}-vm"
