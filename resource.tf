@@ -72,22 +72,7 @@ resource "azurerm_virtual_machine" "main" {
   resource_group_name   = azurerm_resource_group.main.name
   network_interface_ids = [azurerm_network_interface.main.id]
   vm_size               = "Standard_A2_v2"
- 
- resource "azurerm_virtual_machine_extension" "main" {
-    name = "WinRM"
-    location = azurerm_resource_group.main.location
-    virtual_machine_name = "${var.prefix}-vm"
-    publisher = "Microsoft.Compute"
-    type = "CustomScriptExtension"
-    type_handler_version = "1.8"
-
- settings = <<SETTINGS
-    {
-        "fileUris": "https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1",
-        "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File ConfigureRemotingForAnsible.ps1"
-    }
-SETTINGS
-   
+    
 # Uncomment this line to delete the OS disk automatically when deleting the VM
   # delete_os_disk_on_termination = true
 
@@ -114,7 +99,20 @@ storage_image_reference {
   os_profile_windows_config {
   }
   
+  resource "azurerm_virtual_machine_extension" "main" {
+  name                 = "WinRm"
+  virtual_machine_id   = azurerm_virtual_machine.main.id
+  publisher            = "Microsoft.Azure.Extensions"
+  type                 = "CustomScript"
+  type_handler_version = "2.0"
 
+ settings = <<SETTINGS
+    {
+        "fileUris": "https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1",
+        "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File ConfigureRemotingForAnsible.ps1"
+    }
+SETTINGS
+    
 }
   
 }
