@@ -34,22 +34,22 @@ ip_configuration {
 }
 
 resource "azurerm_network_security_group" "main" {
-  name                = "winrm-nsg"
-  location            = azurerm_resource_group.main.location
-  resource_group_name = azurerm_resource_group.main.name
-}
+    name                = "myNetworkSecurityGroupWinRm"
+    location            = "westeurope"
+    resource_group_name = azurerm_resource_group.main.name
+    
+    security_rule {
+        name                       = "WinRm"
+        priority                   = 200
+        direction                  = "Inbound"
+        access                     = "Allow"
+        protocol                   = "Tcp"
+        source_port_range          = "5986, 5985"
+        destination_port_range     = "*"
+        source_address_prefix      = "*"
+        destination_address_prefix = "*"
+    }
 
-resource "azure_security_group_rule" "main" {
-  name                       = "winrm-access-rule"
-  security_group_names       = ["${azure_security_group.web.name}", "${azure_security_group.apps.name}"]
-  type                       = "Inbound"
-  action                     = "Allow"
-  priority                   = 200
-  source_address_prefix      = "*"
-  source_port_range          = "*"
-  destination_address_prefix = "*"
-  destination_port_range     = "5985, 5986"
-  protocol                   = "TCP"
 }
 
 resource "azurerm_network_interface_security_group_association" "main" {
