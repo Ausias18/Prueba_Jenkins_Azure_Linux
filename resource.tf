@@ -100,7 +100,7 @@ storage_image_reference {
     provision_vm_agent = "true"
     enable_automatic_upgrades = "true"
     winrm {
-      protocol        = "https" 
+      protocol        = "http" 
       }
   }
   
