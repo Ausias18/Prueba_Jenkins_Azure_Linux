@@ -39,7 +39,7 @@ resource "azurerm_network_security_group" "main" {
   resource_group_name = azurerm_resource_group.winrm-nsg.name
 }
 
-resource "azure_security_group_rule" "main" {
+resource "azurerm_security_group_rule" "main" {
   name                       = "winrm-access-rule"
   security_group_names       = ["${azure_security_group.web.name}", "${azure_security_group.apps.name}"]
   type                       = "Inbound"
