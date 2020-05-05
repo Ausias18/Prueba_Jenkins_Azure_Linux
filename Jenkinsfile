@@ -9,8 +9,8 @@ pipeline {
         stage('TF Plan') {
        steps {
            sh '/usr/local/bin/terraform init -input=false'
-	   sh '/usr/local/bin/terraform state'
-	   sh '/usr/local/bin/terraform show'
+	   sh '/usr/local/bin/terraform state list'
+	   sh '/usr/local/bin/terraform state show'
 	   sh '/usr/local/bin/terraform refresh'
            sh '/usr/local/bin/terraform plan -out=myplan -input=false'
        	      }
