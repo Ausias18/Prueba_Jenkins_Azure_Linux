@@ -1,5 +1,5 @@
 variable "prefix" {
-  default = "santalucia"
+  default = "santalucia-2"
 }
 
 resource "azurerm_resource_group" "main" {
@@ -30,7 +30,7 @@ resource "azurerm_public_ip" "main" {
 }
 
 resource "azurerm_network_interface" "main" {
-  name                = "santalucia-nic2"
+  name                = "santalucia-nic"
   location            = azurerm_resource_group.main.location
   resource_group_name = azurerm_resource_group.main.name
 
