@@ -58,6 +58,17 @@ resource "azurerm_network_security_group" "main" {
         source_address_prefix      = "*"
         destination_address_prefix = "*"
     }
+      security_rule {
+        name                       = "InternetAccess"
+        priority                   = 210
+        direction                  = "Outbound"
+        access                     = "Allow"
+        protocol                   = "Any"
+        source_port_range          = "*"
+        destination_port_range     = "*"
+        source_address_prefix      = "*"
+        destination_address_prefix = "*"
+    }
 
 }
 
