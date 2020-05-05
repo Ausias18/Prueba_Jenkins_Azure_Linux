@@ -21,13 +21,13 @@ resource "azurerm_subnet" "internal" {
   address_prefix       = "10.0.2.0/24"
 }
 
-resource "azurerm_public_ip" "main" {
-  name                = "SantaluciaPIP"
-  location            = "westeurope"
-  resource_group_name = azurerm_resource_group.main.name
-  allocation_method   = "Static"
-  domain_name_label   = "santalucia-azurerm-resource"
-}
+#resource "azurerm_public_ip" "main" {
+ # name                = "SantaluciaPIP"
+  #location            = "westeurope"
+  #resource_group_name = azurerm_resource_group.main.name
+  #allocation_method   = "Static"
+  #domain_name_label   = "santalucia-azurerm-resource"
+#}
 
 resource "azurerm_network_interface" "main" {
   name                = "${var.prefix}-nic"
@@ -38,7 +38,7 @@ ip_configuration {
     name                          = "testconfiguration1"
     subnet_id                     = azurerm_subnet.internal.id
     private_ip_address_allocation = "Dynamic"
-    public_ip_address_id = azurerm_public_ip.main.id
+   # public_ip_address_id = azurerm_public_ip.main.id
   }
 }
 
