@@ -1,5 +1,5 @@
 variable "prefix" {
-  default = "santalucia-2"
+  default = "santalucia"
 }
 
 resource "azurerm_resource_group" "main" {
