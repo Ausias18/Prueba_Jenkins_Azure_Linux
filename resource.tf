@@ -114,7 +114,6 @@ storage_image_reference {
         "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File ConfigureRemotingForAnsible.ps1"
     }
 SETTINGS
-}
 
 }
   
