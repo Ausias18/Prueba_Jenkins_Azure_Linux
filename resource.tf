@@ -116,5 +116,3 @@ storage_image_reference {
 SETTINGS
     
 }
-  
-}
