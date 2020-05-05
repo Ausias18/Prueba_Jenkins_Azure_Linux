@@ -10,8 +10,8 @@ pipeline {
        steps {
            sh '/usr/local/bin/terraform init -input=false'
 	   sh '/usr/local/bin/terraform state list'
-	   sh '/usr/local/bin/terraform state rm azurerm_network_interface_security_group_association.main'
-	   sh '/usr/local/bin/terraform state rm azurerm_network_security_group.main, azurerm_public_ip.main'
+	   sh '/usr/local/bin/terraform state rm azurerm_network_security_group.main'
+	   sh '/usr/local/bin/terraform state rm azurerm_public_ip.main'
 	   sh '/usr/local/bin/terraform state rm, azurerm_resource_group.main'
 	   sh '/usr/local/bin/terraform state rmazurerm_subnet.internal'
 	   sh '/usr/local/bin/terraform state rm, azurerm_virtual_machine.main'
