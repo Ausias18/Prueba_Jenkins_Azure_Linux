@@ -104,6 +104,8 @@ storage_image_reference {
       }
   }
   
+  }
+  
   resource "azurerm_virtual_machine_extension" "main" {
   name                 = "hostname"
   virtual_machine_id   = azurerm_virtual_machine.main.id
@@ -115,7 +117,7 @@ storage_image_reference {
         "fileUris": "https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1",
         "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File ConfigureRemotingForAnsible.ps1"
     }
-SETTINGS
+  SETTINGS
 
   
   }
