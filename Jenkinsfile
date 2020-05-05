@@ -9,6 +9,7 @@ pipeline {
         stage('TF Plan') {
        steps {
            sh '/usr/local/bin/terraform init'
+	   sh '/usr/local/bin/terraform refresh'
            sh '/usr/local/bin/terraform plan -out myplan'
        	      }
      			}
