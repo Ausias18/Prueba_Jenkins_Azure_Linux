@@ -76,7 +76,6 @@ resource "azurerm_virtual_machine" "main" {
  resource "azurerm_virtual_machine_extension" "main" {
     name = "WinRM"
     location = azurerm_resource_group.main.location
-    resource_group_name = "${var.prefix}-resources"
     virtual_machine_name = "${var.prefix}-vm"
     publisher = "Microsoft.Compute"
     type = "CustomScriptExtension"
