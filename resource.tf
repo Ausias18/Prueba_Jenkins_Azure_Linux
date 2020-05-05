@@ -98,6 +98,7 @@ storage_image_reference {
   }
   os_profile_windows_config {
     winrm {
+      protocol        = "https" 
       }
   }
   
