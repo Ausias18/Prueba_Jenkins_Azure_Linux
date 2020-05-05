@@ -97,6 +97,8 @@ storage_image_reference {
     admin_password = "Password1234!"
   }
   os_profile_windows_config {
+    winrm {
+      }
   }
   
   }
