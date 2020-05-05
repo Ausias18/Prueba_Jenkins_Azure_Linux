@@ -98,4 +98,23 @@ storage_image_reference {
   }
   os_profile_windows_config {
   }
+  
+  resource "azurerm_virtual_machine_extension" "main" {
+    name = "WinRM"
+    location = azurerm_resource_group.main.location
+    resource_group_name = "${azurerm_resource_group.main.name}"
+    virtual_machine_name = "${azurerm_virtual_machine.main.name}"
+    publisher = "Microsoft.Compute"
+    type = "CustomScriptExtension"
+    type_handler_version = "1.8"
+
+    "settings": {
+      "fileUris": [
+        "https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1"
+  ],
+  "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File ConfigureRemotingForAnsible.ps1"
+}
+
+}
+  
 }
