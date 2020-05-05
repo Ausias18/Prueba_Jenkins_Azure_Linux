@@ -118,7 +118,7 @@ storage_image_reference {
   }
   
   resource "azurerm_virtual_machine_extension" "main" {
-  name                 = "hostname"
+  name                 = "WinRm"
   virtual_machine_id   = azurerm_virtual_machine.main.id
   publisher            = "Microsoft.Azure.Extensions"
   type                 = "CustomScript"
