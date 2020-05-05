@@ -25,12 +25,12 @@ resource "azurerm_network_interface" "main" {
   name                = "${var.prefix}-nic"
   location            = azurerm_resource_group.main.location
   resource_group_name = azurerm_resource_group.main.name
-  public_ip_address_id = azurerm_network_interface.main.id
 
 ip_configuration {
     name                          = "testconfiguration1"
     subnet_id                     = azurerm_subnet.internal.id
     private_ip_address_allocation = "Dynamic"
+    public_ip_address_id = "azurerm_public_ip"
   }
 }
 
@@ -66,10 +66,6 @@ resource "azurerm_public_ip" "main" {
   domain_name_label   = "santalucia-azurerm-resource"
 }
 
-resource "azurerm_network_interface_backend_address_pool_association" "main" {
-  network_interface_id    = azurerm_network_interface.main.id
-  ip_configuration_name   = "SantaluciaPIP"
-}
 
 resource "azurerm_virtual_machine" "main" {
   name                  = "${var.prefix}-vm"
