@@ -10,8 +10,8 @@ pipeline {
 	  
 	   stage('Create Image') {
        steps {
-           sh 'packer validate ./base/base.json'
-	   sh 'packer build ./
+           sh '/usr/local/bin/packer validate packer.json'
+	   sh '/usr/local/bin/packer build packer.json'
        	      }
      			}
 	  
