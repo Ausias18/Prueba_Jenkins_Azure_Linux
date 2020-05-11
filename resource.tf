@@ -142,4 +142,3 @@ resource "azurerm_virtual_machine_extension" "custom-script" {
   depends_on = ["azurerm_virtual_machine_extension.join-domain"]
 }
   
-  }
