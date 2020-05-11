@@ -13,7 +13,7 @@
             "tenant_id": "{{user `tenant_id`}}",
             "subscription_id": "{{user `subscription_id`}}",
             
-            "managed_image_resource_group_name": "santalucia-resources-packer",
+            "managed_image_resource_group_name": "santalucia-imagenes-packer",
             "managed_image_name": "ws2016-winrm-packer",
             
             "os_type": "Windows",
