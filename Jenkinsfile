@@ -19,7 +19,11 @@ pipeline {
        steps {
            sh '/usr/local/bin/terraform init -input=false'
 	   sh '/usr/local/bin/terraform state list'
-	   /*sh '/usr/local/bin/terraform state rm azurerm_network_interface.main'
+	   /*
+	   sh '/usr/local/bin/terraform state rm data.azurerm_client_config.current'
+           sh '/usr/local/bin/terraform state rm azurerm_key_vault.main'
+           sh '/usr/local/bin/terraform state rm azurerm_key_vault_certificate.main'
+	   sh '/usr/local/bin/terraform state rm azurerm_network_interface.main'
    	   sh '/usr/local/bin/terraform state rm azurerm_network_interface_security_group_association.main'
            sh '/usr/local/bin/terraform state rm azurerm_network_security_group.main'
            sh '/usr/local/bin/terraform state rm azurerm_public_ip.main'
