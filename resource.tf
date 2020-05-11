@@ -101,10 +101,6 @@ resource "azurerm_network_interface_security_group_association" "main" {
   network_security_group_id = azurerm_network_security_group.main.id
 }
 
-#resource "azurerm_image" "main" {
-  #name                = "packer-image"
-  #location            = azurerm_resource_group.main.location
-  #resource_group_name = azurerm_resource_group.main.name
 
 resource "azurerm_virtual_machine" "main" {
   name                  = "${var.prefix}-vm"
@@ -112,6 +108,21 @@ resource "azurerm_virtual_machine" "main" {
   resource_group_name   = azurerm_resource_group.main.name
   network_interface_ids = [azurerm_network_interface.main.id]
   vm_size               = "Standard_A2_v2"
+
+ storage_os_disk {
+    name            = "FromPackerImageOsDisk"
+    managed_disk_type = "Standard_LRS"
+    caching           = "ReadWrite"
+    create_option     = "FromImage"
+}
+storage_image_reference {
+    id = "/subscriptions/2de9d718-d170-4e29-af3b-60c30e449b3c/resourceGroups/santalucia-imagenes-packer/providers/Microsoft.Compute/images/ws2016-winrm-packer"
+}
+
+# resource "azurerm_image" "main" {
+#  name                = "packer-image"
+#  location            = azurerm_resource_group.main.location
+#  resource_group_name = azurerm_resource_group.main.name
     
 # Uncomment this line to delete the OS disk automatically when deleting the VM
   # delete_os_disk_on_termination = true
@@ -119,18 +130,18 @@ resource "azurerm_virtual_machine" "main" {
 # Uncomment this line to delete the data disks automatically when deleting the VM
   # delete_data_disks_on_termination = true
 
-storage_image_reference {
-    publisher = "MicrosoftWindowsServer"
-    offer     = "WindowsServer"
-    sku       = "2016-Datacenter"
-    version   = "latest"
-  }
-  storage_os_disk {
-    name              = "myosdisk1"
-    caching           = "ReadWrite"
-    create_option     = "FromImage"
-    managed_disk_type = "Standard_LRS"
-  }
+#storage_image_reference {
+#    publisher = "MicrosoftWindowsServer"
+#    offer     = "WindowsServer"
+#    sku       = "2016-Datacenter"
+#    version   = "latest"
+# }
+#  storage_os_disk {
+#    name              = "myosdisk1"
+#    caching           = "ReadWrite"
+#    create_option     = "FromImage"
+#    managed_disk_type = "Standard_LRS"
+#  }
   os_profile {
     computer_name  = "Prueba"
     admin_username = "arqsis"
@@ -139,9 +150,9 @@ storage_image_reference {
   os_profile_windows_config {
     provision_vm_agent = "true"
     enable_automatic_upgrades = "true"
-    winrm {
-      protocol        = "http" 
-      }
+ #   winrm {
+ #     protocol        = "http" 
+ #     }
   }
   
   }
