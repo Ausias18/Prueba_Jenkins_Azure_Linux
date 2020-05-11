@@ -15,9 +15,9 @@
             "os_type": "Windows",
             "image_publisher": "MicrosoftWindowsServer",
             "image_offer": "WindowsServer",
-            "image_sku": "2019-Datacenter",
+            "image_sku": "2016-Datacenter",
             "image_version": "latest",
-            "managed_image_resource_group_name": "TestRG",
+            "managed_image_resource_group_name": "santalucia-resources-packer",
             "managed_image_name": "ws2019-iis",
             "disk_caching_type": "ReadWrite",
             "communicator": "winrm",
@@ -27,21 +27,14 @@
             "winrm_username": "packer",
             "location": "West Europe",
             "vm_size": "Standard_A2_v2",
-            "azure_tags": {
-                "dept": "IT"
-            }
         }
     ],
     "provisioners": [
         {
             "type": "powershell",
             "inline": [
-                "Write-Host 'Configuring IIS Role and sysprepping...'"
+                "Write-Host 'Configuring windows 2016 Datacenter...'"
             ]
-        },
-        {
-            "type": "powershell",
-            "script": "./scripts/iis-install.ps1"
         },
         {
             "type": "windows-update"
@@ -49,9 +42,5 @@
         {
             "type": "windows-restart"
         },
-        {
-            "type": "powershell",
-            "script": "./scripts/iis-sysprep.ps1"
-        }
     ]
 }
