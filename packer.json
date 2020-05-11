@@ -38,8 +38,7 @@
         {
             "type": "powershell",
             "inline": [
-                "Write-Host 'Configuring windows 2016 Datacenter...'
-                $env:SystemRoot\\System32\\Sysprep\\Sysprep.exe /oobe /generalize /quiet /quit"
+                "Write-Host 'Configuring windows 2016 Datacenter...'"
             ]
         },
         {
