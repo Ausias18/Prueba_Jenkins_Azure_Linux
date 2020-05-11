@@ -264,8 +264,8 @@ storage_image_reference {
  
      winrm { 
        protocol        = "https" 
-       #certificate_url = "azurerm_key_vault_certificate.main.id" 
-       certificate_url = "${azurerm_key_vault.main.vault_uri}secrets/${azurerm_key_vault_certificate.main.name}/${azurerm_key_vault_certificate.main.version}"
+       certificate_url = "azurerm_key_vault_certificate.main.id" 
+       #certificate_url = "${azurerm_key_vault.main.vault_uri}secrets/${azurerm_key_vault_certificate.main.name}/${azurerm_key_vault_certificate.main.version}"
 
        } 
    } 
