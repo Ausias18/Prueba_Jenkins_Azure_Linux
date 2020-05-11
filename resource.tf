@@ -104,10 +104,10 @@ resource "azurerm_network_interface_security_group_association" "main" {
  data "azurerm_client_config" "current" {
 }
 
-#resource "azurerm_resource_group" "main" {
-#  name     = "key-vault-certificate-main"
-#  location = "West Europe"
-#}
+resource "azurerm_resource_group" "main" {
+  name     = "key-vault-certificate-main"
+  location = "West Europe"
+}
 
 resource "azurerm_key_vault" "main" {
   name                = "keyvaultcertmain"
@@ -166,7 +166,6 @@ resource "azurerm_key_vault" "main" {
       "set",
     ]
   }
-
 } 
   
  resource "azurerm_key_vault_certificate" "main" { 
