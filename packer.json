@@ -18,7 +18,7 @@
             "image_sku": "2016-Datacenter",
             "image_version": "latest",
             "managed_image_resource_group_name": "santalucia-resources-packer",
-            "managed_image_name": "ws2019-iis",
+            "managed_image_name": "ws2016-winrm",
             "disk_caching_type": "ReadWrite",
             "communicator": "winrm",
             "winrm_use_ssl": true,
