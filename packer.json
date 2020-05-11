@@ -12,19 +12,24 @@
             "client_secret": "{{user `client_secret`}}",
             "tenant_id": "{{user `tenant_id`}}",
             "subscription_id": "{{user `subscription_id`}}",
+            
+            "managed_image_resource_group_name": "santalucia-resources-packer",
+            "managed_image_name": "ws2016-winrm-packer",
+            
             "os_type": "Windows",
             "image_publisher": "MicrosoftWindowsServer",
             "image_offer": "WindowsServer",
             "image_sku": "2016-Datacenter",
             "image_version": "latest",
-            "managed_image_resource_group_name": "santalucia-resources-packer",
-            "managed_image_name": "ws2016-winrm",
+            
             "disk_caching_type": "ReadWrite",
+            
             "communicator": "winrm",
             "winrm_use_ssl": true,
             "winrm_insecure": true,
-            "winrm_timeout": "20m",
+            "winrm_timeout": "5m",
             "winrm_username": "packer",
+            
             "location": "West Europe",
             "vm_size": "Standard_A2_v2",
         }
@@ -34,6 +39,7 @@
             "type": "powershell",
             "inline": [
                 "Write-Host 'Configuring windows 2016 Datacenter...'"
+                "$env:SystemRoot\\System32\\Sysprep\\Sysprep.exe /oobe /generalize /quiet /quit",
             ]
         },
         {
@@ -43,4 +49,5 @@
             "type": "windows-restart"
         },
     ]
+    
 }
