@@ -29,14 +29,11 @@ pipeline {
 	}
 	 }
 	  
-	  stage('Approval-Apply') {
-      steps {
+	 stage('Approval-Apply') {
+        steps {
         script {
           def userInput = input(id: 'confirm', message: 'Apply Terraform?', parameters: [ [$class: 'BooleanParameterDefinition', defaultValue: false, description: 'Apply terraform', name: 'confirm'] ])
         }
-      }
-	steps {
-        container('terraform') {
           sh '/usr/local/bin/terraform apply -input=false myplan'
         }
       }
