@@ -147,9 +147,75 @@ storage_image_reference {
     admin_username = "arqsis"
     admin_password = "Password1234!"
   }
-  os_profile_windows_config {
-    provision_vm_agent = "true"
-    enable_automatic_upgrades = "true"
+ 
+ resource "azurerm_key_vault_certificate" "main" { 
+   name      = "${var.prefix}-cert" 
+   vault_uri = "${azurerm_key_vault.main.vault_uri}" 
+  
+   certificate_policy { 
+     issuer_parameters { 
+       name = "Self" 
+     } 
+  
+     key_properties { 
+       exportable = true 
+       key_size   = 2048 
+       key_type   = "RSA" 
+       reuse_key  = true 
+     } 
+  
+     lifetime_action { 
+       action { 
+         action_type = "AutoRenew" 
+       } 
+  
+       trigger { 
+         days_before_expiry = 30 
+       } 
+     } 
+  
+     secret_properties { 
+       content_type = "application/x-pkcs12" 
+     } 
+  
+     x509_certificate_properties { 
+       key_usage = [ 
+         "cRLSign", 
+         "dataEncipherment", 
+         "digitalSignature", 
+         "keyAgreement", 
+         "keyCertSign", 
+         "keyEncipherment", 
+       ] 
+  
+       subject            = "CN=${azurerm_network_interface.main.private_ip_address}" 
+       validity_in_months = 12 
+     } 
+   } 
+ } 
+    
+   os_profile_windows_config { 
+     provision_vm_agent = true 
+ 
+     winrm { 
+       protocol        = "https" 
+       certificate_url = "${azurerm_key_vault_certificate.main.secret_id}" 
+     } 
+   } 
+  
+   os_profile_secrets { 
+     source_vault_id = "${azurerm_key_vault.main.id}" 
+  
+     vault_certificates { 
+       certificate_url   = "${azurerm_key_vault_certificate.main.secret_id}" 
+       certificate_store = "My" 
+     } 
+   } 
+ } 
+  
+  # os_profile_windows_config {
+ #   provision_vm_agent = "true"
+ #   enable_automatic_upgrades = "true"
  #   winrm {
  #     protocol        = "http" 
  #     }
