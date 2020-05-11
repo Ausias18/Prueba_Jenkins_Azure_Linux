@@ -281,7 +281,7 @@ storage_image_reference {
    #certificate_store = "My" 
    #  } 
   # } 
- #} 
+ } 
   
   # os_profile_windows_config {
  #   provision_vm_agent = "true"
