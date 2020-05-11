@@ -148,6 +148,74 @@ storage_image_reference {
     admin_password = "Password1234!"
   }
  
+ data "azurerm_client_config" "current" {
+}
+
+resource "azurerm_resource_group" "main" {
+  name     = "key-vault-certificate-main"
+  location = "West Europe"
+}
+
+resource "azurerm_key_vault" "main" {
+  name                = "keyvaultcertmain"
+  location            = azurerm_resource_group.main.location
+  resource_group_name = azurerm_resource_group.main.name
+  tenant_id           = "ece33831-9bc7-4217-a330-2082dfa1a525"
+
+  sku_name = "standard"
+
+  access_policy {
+    tenant_id = "ece33831-9bc7-4217-a330-2082dfa1a525"
+    object_id = data.azurerm_client_config.current.object_id
+
+    certificate_permissions = [
+      "create",
+      "delete",
+      "deleteissuers",
+      "get",
+      "getissuers",
+      "import",
+      "list",
+      "listissuers",
+      "managecontacts",
+      "manageissuers",
+      "setissuers",
+      "update",
+    ]
+
+    key_permissions = [
+      "backup",
+      "create",
+      "decrypt",
+      "delete",
+      "encrypt",
+      "get",
+      "import",
+      "list",
+      "purge",
+      "recover",
+      "restore",
+      "sign",
+      "unwrapKey",
+      "update",
+      "verify",
+      "wrapKey",
+    ]
+
+    secret_permissions = [
+      "backup",
+      "delete",
+      "get",
+      "list",
+      "purge",
+      "recover",
+      "restore",
+      "set",
+    ]
+  }
+
+} 
+  
  resource "azurerm_key_vault_certificate" "main" { 
    name      = "${var.prefix}-cert" 
    vault_uri = "${azurerm_key_vault.main.vault_uri}" 
