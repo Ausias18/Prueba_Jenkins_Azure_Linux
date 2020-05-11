@@ -138,8 +138,8 @@ resource "azurerm_virtual_machine_extension" "custom-script" {
 
   settings = <<SETTINGS
     {
-        "commandToExecute": "powershell .\\elevated_shell.ps1 -Script (Resolve-Path .\\setupWinRm.ps1) -Username arqsis -Password Password1234!",
-        "fileUris" : ["https://yourbloborwhereveryoukeepyourscripts/elevated_shell.ps1", "https://yourbloborwhereveryoukeepyourscripts/setupWinRm.ps1"]
+        "fileUris": "https://raw.githubusercontent.com/habitat-sh/habitat/master/components/hab/install.ps1",
+        "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File install.ps1"
      }
   SETTINGS
 
