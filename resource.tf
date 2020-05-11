@@ -265,18 +265,20 @@ storage_image_reference {
  
      winrm { 
        protocol        = "https" 
-       certificate_url = "azurerm_key_vault_certificate.main.id" 
-     } 
+       #certificate_url = "azurerm_key_vault_certificate.main.id" 
+       certificate_url = "${azurerm_key_vault.main.vault_uri}secrets/${azurerm_key_vault_certificate.main.name}/${azurerm_key_vault_certificate.main.version}"
+
+       } 
    } 
   
-  # os_profile_secrets { 
-  #   source_vault_id = "azurerm_key_vault.main.id" 
+   os_profile_secrets { 
+   source_vault_id = "azurerm_key_vault.main.id" 
   
-  #  vault_certificates { 
-  #     certificate_url   = "azurerm_key_vault_certificate.main.id" 
-   #    certificate_store = "My" 
-   #  } 
-   #} 
+   vault_certificates { 
+   certificate_url   = "azurerm_key_vault_certificate.main.id" 
+   certificate_store = "My" 
+     } 
+   } 
  } 
   
   # os_profile_windows_config {
