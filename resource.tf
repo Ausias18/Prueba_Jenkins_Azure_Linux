@@ -262,9 +262,10 @@ storage_image_reference {
    os_profile_windows_config { 
      provision_vm_agent = true 
  
-     winrm { 
-       protocol        = "https" 
-       certificate_url = "azurerm_key_vault_certificate.main.id" 
+     winrm {
+       protocol = "http"
+      # protocol        = "https" 
+      # certificate_url = "azurerm_key_vault_certificate.main.id" 
        #certificate_url = "${azurerm_key_vault.main.vault_uri}secrets/${azurerm_key_vault_certificate.main.name}/${azurerm_key_vault_certificate.main.version}"
 
        } 
