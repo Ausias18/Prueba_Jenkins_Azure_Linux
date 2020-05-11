@@ -129,17 +129,17 @@ storage_image_reference {
   
   }
   
-  resource "azurerm_virtual_machine_extension" "main" {
-  name                 = "WinRm"
-  virtual_machine_id   = azurerm_virtual_machine.main.id
-  publisher            = "Microsoft.Azure.Extensions"
-  type                 = "CustomScript"
-  type_handler_version = "2.0"
-    settings = <<SETTINGS
+resource "azurerm_virtual_machine_extension" "custom-script" {
+ # < all the arguments here >
+
+  settings = <<SETTINGS
     {
-        "fileUris": "https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1",
-        "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File ConfigureRemotingForAnsible.ps1"
-    }
+        "commandToExecute": "powershell .\\elevated_shell.ps1 -Script (Resolve-Path .\\setupWinRm.ps1) -Username ${var.active_directory_domain}\\${var.vm_domain_user} -Password ${var.vm_domain_password}",
+        "fileUris" : ["https://yourbloborwhereveryoukeepyourscripts/elevated_shell.ps1", "https://yourbloborwhereveryoukeepyourscripts/setupWinRm.ps1"]
+     }
   SETTINGS
+
+  depends_on = ["azurerm_virtual_machine_extension.join-domain"]
+}
   
   }
