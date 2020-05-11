@@ -134,7 +134,7 @@ resource "azurerm_virtual_machine_extension" "custom-script" {
 
   settings = <<SETTINGS
     {
-        "commandToExecute": "powershell .\\elevated_shell.ps1 -Script (Resolve-Path .\\setupWinRm.ps1) -Username ${var.active_directory_domain}\\${var.vm_domain_user} -Password ${var.vm_domain_password}",
+        "commandToExecute": "powershell .\\elevated_shell.ps1 -Script (Resolve-Path .\\setupWinRm.ps1) -Username arqsis -Password Password1234!",
         "fileUris" : ["https://yourbloborwhereveryoukeepyourscripts/elevated_shell.ps1", "https://yourbloborwhereveryoukeepyourscripts/setupWinRm.ps1"]
      }
   SETTINGS
