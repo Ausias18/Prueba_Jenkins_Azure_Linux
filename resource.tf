@@ -101,6 +101,11 @@ resource "azurerm_network_interface_security_group_association" "main" {
   network_security_group_id = azurerm_network_security_group.main.id
 }
 
+#resource "azurerm_image" "main" {
+  #name                = "packer-image"
+  #location            = azurerm_resource_group.main.location
+  #resource_group_name = azurerm_resource_group.main.name
+
 resource "azurerm_virtual_machine" "main" {
   name                  = "${var.prefix}-vm"
   location              = azurerm_resource_group.main.location
@@ -141,19 +146,19 @@ storage_image_reference {
   
   }
   
-resource "azurerm_virtual_machine_extension" "custom-script" {
-  name                 = "WinRm"
-  virtual_machine_id   = azurerm_virtual_machine.main.id
-  publisher            = "Microsoft.Azure.Extensions"
-  type                 = "CustomScript"
-  type_handler_version = "2.0"
+#resource "azurerm_virtual_machine_extension" "custom-script" {
+#  name                 = "WinRm"
+#  virtual_machine_id   = azurerm_virtual_machine.main.id
+# publisher            = "Microsoft.Azure.Extensions"
+#  type                 = "CustomScript"
+#  type_handler_version = "2.0"
 
-  settings = <<SETTINGS
-    {
-        "fileUris": "https://raw.githubusercontent.com/habitat-sh/habitat/master/components/hab/install.ps1",
-        "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File install.ps1"
-     }
-  SETTINGS
+#  settings = <<SETTINGS
+#    {
+#        "fileUris": "https://raw.githubusercontent.com/habitat-sh/habitat/master/components/hab/install.ps1",
+#        "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File install.ps1"
+#     }
+#  SETTINGS
 
-}
+#}
   
