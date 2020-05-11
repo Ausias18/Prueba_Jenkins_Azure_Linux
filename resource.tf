@@ -259,7 +259,6 @@ storage_image_reference {
     admin_password = "Password1234!"
   }
  
-
    os_profile_windows_config { 
      provision_vm_agent = true 
  
@@ -271,18 +270,18 @@ storage_image_reference {
        } 
    } 
   
-   os_profile_secrets { 
+ #  os_profile_secrets { 
    #source_vault_id = "azurerm_key_vault.main.id"
-   source_vault_id =  "/subscriptions/2de9d718-d170-4e29-af3b-60c30e449b3c/resourceGroups/santalucia-resources/providers/Microsoft.KeyVault/vaults/keyvaultcertmain"
+  # source_vault_id =  "/subscriptions/2de9d718-d170-4e29-af3b-60c30e449b3c/resourceGroups/santalucia-resources/providers/Microsoft.KeyVault/vaults/keyvaultcertmain"
      
-   vault_certificates { 
+   #vault_certificates { 
    #certificate_url   = "azurerm_key_vault_certificate.main.id" 
-   certificate_url   = "${azurerm_key_vault.main.vault_uri}secrets/${azurerm_key_vault_certificate.main.name}/${azurerm_key_vault_certificate.main.version}"
+  # certificate_url   = "${azurerm_key_vault.main.vault_uri}secrets/${azurerm_key_vault_certificate.main.name}/${azurerm_key_vault_certificate.main.version}"
 
-   certificate_store = "My" 
-     } 
-   } 
- } 
+   #certificate_store = "My" 
+   #  } 
+  # } 
+ #} 
   
   # os_profile_windows_config {
  #   provision_vm_agent = "true"
