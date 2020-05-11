@@ -163,10 +163,10 @@ resource "azurerm_key_vault" "main" {
   }
 } 
   
- resource "azurerm_key_vault_certificate" "main" { 
-   name      = "${var.prefix}-cert" 
-   key_vault_uri = "azurerm_key_vault.main.vault_uri" 
-   key_vault_id = "azurerm_key_vault.main.vault_id"
+resource "azurerm_key_vault_certificate" "main" {
+  name         = "generated-cert"
+  key_vault_id = azurerm_key_vault.main.id
+   
   
    certificate_policy { 
      issuer_parameters { 
