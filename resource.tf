@@ -219,9 +219,9 @@ storage_image_reference {
  #   winrm {
  #     protocol        = "http" 
  #     }
-  }
+ # }
   
-  }
+ # }
   
 #resource "azurerm_virtual_machine_extension" "custom-script" {
 #  name                 = "WinRm"
