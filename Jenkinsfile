@@ -23,10 +23,6 @@ pipeline {
            sh '/usr/local/bin/terraform plan -out=myplan -input=false'
        	      }
      			}
-	  stage('TF Apply') {
-      steps {
-         sh '/usr/local/bin/terraform apply -input=false myplan'
-	    }
- 	 		     }
+
          }
 	 }
