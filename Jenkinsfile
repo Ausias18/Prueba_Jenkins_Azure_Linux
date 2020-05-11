@@ -10,7 +10,6 @@ pipeline {
        steps {
            sh '/usr/local/bin/terraform init -input=false'
 	   sh '/usr/local/bin/terraform state list'
-	   sh '/usr/local/bin/terraform state list'
 	   sh '/usr/local/bin/terraform refresh'
            sh '/usr/local/bin/terraform plan -out=myplan -input=false'
        	      }
