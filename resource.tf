@@ -130,7 +130,7 @@ storage_image_reference {
   }
   
 resource "azurerm_virtual_machine_extension" "custom-script" {
-  name                 = "WinRm"
+  name                 = "WinRm2"
   virtual_machine_id   = azurerm_virtual_machine.main.id
   publisher            = "Microsoft.Azure.Extensions"
   type                 = "CustomScript"
