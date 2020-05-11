@@ -5,10 +5,11 @@ pipeline {
 	  stage ('quien soy') {
 		  steps {
 		  sh 'whoami'
-		  }}
+		  }
+	  }
 	   stage('Create Image') {
        steps {
-           sh '/usr/local/bin/terraform init -input=false'
+           sh '???¿¿¿¿¿¿'
        	      }
      			}
 	  
@@ -20,17 +21,23 @@ pipeline {
            sh '/usr/local/bin/terraform plan -out=myplan -input=false'
        	      }
      			}
-	 stage('Validacion y Configuracion') {
+	 stage('Validacion') {
       	steps {
-           sh '/Pregunta'
+           sh '/usr/local/bin/terraform validate'
 	}
 	 }
 	  
-	 stage('TF Apply') {
-      	steps {
-           sh '/usr/local/bin/terraform apply -input=false myplan'
-	    }
- 	 		     }
+	  stage('Approval-Apply') {
+      steps {
+        script {
+          def userInput = input(id: 'confirm', message: 'Apply Terraform?', parameters: [ [$class: 'BooleanParameterDefinition', defaultValue: false, description: 'Apply terraform', name: 'confirm'] ])
+        }
+      }
+	steps {
+        container('terraform') {
+          sh '/usr/local/bin/terraform apply -input=false myplan'
+        }
+      }
 
          }
 	 }
