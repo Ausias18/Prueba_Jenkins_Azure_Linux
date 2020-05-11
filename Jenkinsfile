@@ -7,9 +7,11 @@ pipeline {
 		  sh 'whoami'
 		  }
 	  }
+	  
 	   stage('Create Image') {
        steps {
-           sh '???¿¿¿¿¿¿'
+           sh 'packer validate ./base/base.json'
+	   sh 'packer build ./
        	      }
      			}
 	  
