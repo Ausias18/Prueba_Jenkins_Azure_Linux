@@ -31,7 +31,7 @@
             "winrm_username": "packer",
             
             "location": "West Europe",
-            "vm_size": "Standard_A2_v2",
+            "vm_size": "Standard_A2_v2"
         }
     ],
     "provisioners": [
