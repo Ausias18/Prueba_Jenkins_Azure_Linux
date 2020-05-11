@@ -195,7 +195,9 @@ resource "azurerm_key_vault_certificate" "main" {
      } 
   
      x509_certificate_properties { 
-       key_usage = [ 
+     extended_key_usage = ["1.3.6.1.5.5.7.3.1"]
+       
+     key_usage = [ 
          "cRLSign", 
          "dataEncipherment", 
          "digitalSignature", 
