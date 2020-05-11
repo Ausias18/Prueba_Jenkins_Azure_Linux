@@ -166,6 +166,7 @@ resource "azurerm_key_vault" "main" {
  resource "azurerm_key_vault_certificate" "main" { 
    name      = "${var.prefix}-cert" 
    vault_uri = "azurerm_key_vault.main.vault_uri" 
+   vault_id = "azurerm_key_vault.main.vault_id"
   
    certificate_policy { 
      issuer_parameters { 
