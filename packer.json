@@ -43,7 +43,7 @@
             ]
         }
     ]
-    "provisioners":[
+    "provisioners": [
         {
     "type": "powershell",
     "inline": [
