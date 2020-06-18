@@ -7,13 +7,12 @@ pipeline {
 		  sh 'whoami'
 		  }
 	  }
-	  
-/*	   stage('Create Image') {
+	  stage('Create Image') {
        steps {
            sh '/usr/local/bin/packer validate packer.json'
 	   sh '/usr/local/bin/packer build packer.json'
        	      }
-     			}*/
+     			}
 	  
         stage('TF Plan') {
        steps {
