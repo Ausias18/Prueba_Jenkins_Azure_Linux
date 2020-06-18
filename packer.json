@@ -43,5 +43,13 @@
             ]
         }
     ]
-    
+    "provisioners":[
+        {
+    "type": "powershell",
+    "inline": [
+        "Enable-PSRemoting"
+              ]
+        }
+                    ]
 }
+
