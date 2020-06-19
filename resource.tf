@@ -270,6 +270,7 @@ storage_image_reference {
        #certificate_url = "${azurerm_key_vault.main.vault_uri}secrets/${azurerm_key_vault_certificate.main.name}/${azurerm_key_vault_certificate.main.version}"
            } 
    } 
+  }
   
  #  os_profile_secrets { 
    #source_vault_id = "azurerm_key_vault.main.id"
