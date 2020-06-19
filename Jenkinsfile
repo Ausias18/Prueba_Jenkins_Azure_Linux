@@ -16,7 +16,7 @@ pipeline {
 	  
 	    stage('creando imagen... ') {
        steps {
-           sleep 600 //seconds
+           sleep 60 //seconds
        	      }
      			}
 	  
