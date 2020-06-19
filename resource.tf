@@ -317,5 +317,4 @@ storage_image_reference {
     PROTECTED_SETTINGS
     }
 
-}
   
