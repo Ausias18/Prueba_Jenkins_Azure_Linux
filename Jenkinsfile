@@ -34,9 +34,9 @@ pipeline {
            sh '/usr/local/bin/terraform state rm azurerm_resource_group.main'
            sh '/usr/local/bin/terraform state rm azurerm_subnet.internal'
            sh '/usr/local/bin/terraform state rm azurerm_virtual_machine.main'
-           sh '/usr/local/bin/terraform state rm azurerm_virtual_network.main' */
+           sh '/usr/local/bin/terraform state rm azurerm_virtual_network.main' 
            sh '/usr/local/bin/terraform state list'
-	   sh '/usr/local/bin/terraform refresh'
+	   sh '/usr/local/bin/terraform refresh' */
            sh '/usr/local/bin/terraform plan -out=myplan -input=false'
        	      }
      			}
