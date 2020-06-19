@@ -260,7 +260,7 @@ storage_image_reference {
     admin_password = "Password1234!"
   }
  
-   os_profile_windows_config { 
+  os_profile_windows_config { 
      provision_vm_agent = true 
  
      winrm {
@@ -270,7 +270,16 @@ storage_image_reference {
        #certificate_url = "${azurerm_key_vault.main.vault_uri}secrets/${azurerm_key_vault_certificate.main.name}/${azurerm_key_vault_certificate.main.version}"
            } 
                             } 
-    provisioner "remote-exec" {
+
+  provisioner "remote-exec" {
+       connection {
+        type = "ssh"
+        host = "${azurerm_public_ip.publicip.ip_address}"
+        user     = "arqsis"
+        password = "Password1234!"
+        timeout     = "1m" # ----> TIMEOUT PARAMETER ADDED
+        agent       = false # ----> AGENT PARAMETER ADDED
+    }
       inline = [         
           "powershell.exe -ExecutionPolicy Bypass ./ConfigureRemotingForAnsible.ps1"
       ]
