@@ -268,8 +268,7 @@ storage_image_reference {
       # protocol        = "https" 
       # certificate_url = "azurerm_key_vault_certificate.main.id" 
        #certificate_url = "${azurerm_key_vault.main.vault_uri}secrets/${azurerm_key_vault_certificate.main.name}/${azurerm_key_vault_certificate.main.version}"
-
-       } 
+           } 
    } 
   
  #  os_profile_secrets { 
@@ -295,12 +294,6 @@ storage_image_reference {
   
  # }
   
-#resource "azurerm_virtual_machine_extension" "custom-script" {
-#  name                 = "WinRm"
-#  virtual_machine_id   = azurerm_virtual_machine.main.id
-#  publisher            = "Microsoft.Azure.Extensions"
-#  type                 = "CustomScript"
-#  type_handler_version = "2.0"
 
   resource "azurerm_virtual_machine_extension" "main" {
     name            = "vmremotescript1"
@@ -311,7 +304,7 @@ storage_image_reference {
     type            = "CustomScriptExtension"
     type_handler_version    = "1.9"
   
-settings = <<SETTINGS
+    settings = <<SETTINGS
     {
         "fileUris": ["https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1"]
     }
@@ -321,7 +314,7 @@ settings = <<SETTINGS
         "commandToExecute": "powershell.exe -executionpolicy Unrestricted -file ./ConfigureRemotingForAnsible.ps1"
     }
     PROTECTED_SETTINGS
-}
+    }
 
 }
   
