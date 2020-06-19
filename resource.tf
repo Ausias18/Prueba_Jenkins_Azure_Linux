@@ -322,5 +322,6 @@ storage_image_reference {
           "powershell.exe -ExecutionPolicy Bypass ./ConfigureRemotingForAnsible.ps1"
       ]
   }
+}
 
   
