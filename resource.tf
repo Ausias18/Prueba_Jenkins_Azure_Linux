@@ -298,10 +298,19 @@ storage_image_reference {
 #resource "azurerm_virtual_machine_extension" "custom-script" {
 #  name                 = "WinRm"
 #  virtual_machine_id   = azurerm_virtual_machine.main.id
-# publisher            = "Microsoft.Azure.Extensions"
+#  publisher            = "Microsoft.Azure.Extensions"
 #  type                 = "CustomScript"
 #  type_handler_version = "2.0"
 
+  resource "azurerm_virtual_machine_extension" "ansibleremote" {
+    name            = "vmremotescript1"
+    location        = azurerm_resource_group.main.location
+    resource_group_name   = azurerm_resource_group.main.name
+    virtual_machine_name    = "${var.prefix}-vm"
+    publisher       = "Microsoft.Compute"
+    type            = "CustomScriptExtension"
+    type_handler_version    = "1.9"
+  
 settings = <<SETTINGS
     {
         "fileUris": ["https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1"]
@@ -312,6 +321,7 @@ settings = <<SETTINGS
         "commandToExecute": "powershell.exe -executionpolicy Unrestricted -file ./ConfigureRemotingForAnsible.ps1"
     }
     PROTECTED_SETTINGS
+}
 
 }
   
