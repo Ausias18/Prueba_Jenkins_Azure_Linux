@@ -14,7 +14,7 @@ pipeline {
        	      }
      			}
 	  
-	    stage('creando imagen... tomate un cafe de 10 min') {
+	    stage('creando imagen... ') {
        steps {
            sleep 600 //seconds
        	      }
