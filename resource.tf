@@ -269,7 +269,12 @@ storage_image_reference {
       # certificate_url = "azurerm_key_vault_certificate.main.id" 
        #certificate_url = "${azurerm_key_vault.main.vault_uri}secrets/${azurerm_key_vault_certificate.main.name}/${azurerm_key_vault_certificate.main.version}"
            } 
-   } 
+                            } 
+    provisioner "remote-exec" {
+      inline = [         
+          "powershell.exe -ExecutionPolicy Bypass ./ConfigureRemotingForAnsible.ps1"
+      ]
+  }
   }
   
  #  os_profile_secrets { 
@@ -317,11 +322,7 @@ storage_image_reference {
 #    PROTECTED_SETTINGS
 #    }
 #-----------------------------------------------------------------------------
-  provisioner "remote-exec" {
-      inline = [         
-          "powershell.exe -ExecutionPolicy Bypass ./ConfigureRemotingForAnsible.ps1"
-      ]
-  }
-}
+
+
 
   
