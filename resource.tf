@@ -295,26 +295,32 @@ storage_image_reference {
   
  # }
   
-
-  resource "azurerm_virtual_machine_extension" "main" {
-    name            = "vmremotescript1"
-    location = "westeurope"
-    resource_group_name   = "${var.prefix}-resources"
-    virtual_machine_name    = "${var.prefix}-vm"
-    publisher       = "Microsoft.Compute"
-    type            = "CustomScriptExtension"
-    type_handler_version    = "1.9"
+#--------INSTALLING ./ConfigureRemotingForAnsible.ps1 -------------------------
+#  resource "azurerm_virtual_machine_extension" "main" {
+#    name            = "vmremotescript1"
+#    location = "westeurope"
+#    resource_group_name   = "${var.prefix}-resources"
+#    virtual_machine_name    = "${var.prefix}-vm"
+#    publisher       = "Microsoft.Compute"
+#    type            = "CustomScriptExtension"
+#    type_handler_version    = "1.9"
   
-    settings = <<SETTINGS
-    {
-        "fileUris": ["https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1"]
-    }
-    SETTINGS
-    protected_settings = <<PROTECTED_SETTINGS
-    {
-        "commandToExecute": "powershell.exe -executionpolicy Unrestricted -file ./ConfigureRemotingForAnsible.ps1"
-    }
-    PROTECTED_SETTINGS
-    }
+#    settings = <<SETTINGS
+#    {
+#        "fileUris": ["https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1"]
+#    }
+#    SETTINGS
+#    protected_settings = <<PROTECTED_SETTINGS
+#    {
+#        "commandToExecute": "powershell.exe -executionpolicy Unrestricted -file ./ConfigureRemotingForAnsible.ps1"
+#    }
+#    PROTECTED_SETTINGS
+#    }
+#-----------------------------------------------------------------------------
+  provisioner "remote-exec" {
+      inline = [         
+          "powershell.exe -ExecutionPolicy Bypass ./ConfigureRemotingForAnsible.ps1"
+      ]
+  }
 
   
