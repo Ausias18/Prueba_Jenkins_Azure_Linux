@@ -282,7 +282,7 @@ storage_image_reference {
            } 
                             } 
 
-  provisioner "remote-exec" {
+ # provisioner "remote-exec" {
      #  connection {
      #   type = "ssh"
      #   host = "Prueba"
@@ -291,11 +291,11 @@ storage_image_reference {
      #   timeout     = "1m" # ----> TIMEOUT PARAMETER ADDED
      #   agent       = false # ----> AGENT PARAMETER ADDED
    # }
-      inline = [         
-          "./ConfigureRemotingForAnsible.ps1"
-      ]
-  }
-  }
+   #   inline = [         
+   #       "./ConfigureRemotingForAnsible.ps1"
+   #   ]
+  #}
+  #}
 
 #resource "null_resource" "PowerShellScriptRunFirstTimeOnly" {
 #    provisioner "local-exec" {
