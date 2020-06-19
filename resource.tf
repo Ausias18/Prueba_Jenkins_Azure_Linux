@@ -302,7 +302,7 @@ storage_image_reference {
 #  type                 = "CustomScript"
 #  type_handler_version = "2.0"
 
-  resource "azurerm_virtual_machine_extension" "ansibleremote" {
+  resource "azurerm_virtual_machine_extension" "main" {
     name            = "vmremotescript1"
     location = "westeurope"
     resource_group_name   = "${var.prefix}-resources"
