@@ -297,12 +297,6 @@ storage_image_reference {
   #}
   #}
 
-#resource "null_resource" "PowerShellScriptRunFirstTimeOnly" {
-#    provisioner "local-exec" {
-#        command = "./ConfigureRemotingForAnsible.ps1"
-#        interpreter = ["PowerShell", "-Command"]
-#    }
-#}
   
  #  os_profile_secrets { 
    #source_vault_id = "azurerm_key_vault.main.id"
