@@ -283,14 +283,14 @@ storage_image_reference {
                             } 
 
   provisioner "remote-exec" {
-       connection {
-        type = "ssh"
-        host = "Prueba"
-        user     = "arqsis"
-        password = "Password1234!"
-        timeout     = "1m" # ----> TIMEOUT PARAMETER ADDED
-        agent       = false # ----> AGENT PARAMETER ADDED
-    }
+     #  connection {
+     #   type = "ssh"
+     #   host = "Prueba"
+     #   user     = "arqsis"
+     #   password = "Password1234!"
+     #   timeout     = "1m" # ----> TIMEOUT PARAMETER ADDED
+     #   agent       = false # ----> AGENT PARAMETER ADDED
+   # }
       inline = [         
           "./ConfigureRemotingForAnsible.ps1"
       ]
