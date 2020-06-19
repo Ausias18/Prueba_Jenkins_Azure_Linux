@@ -309,7 +309,7 @@ settings = <<SETTINGS
     SETTINGS
     protected_settings = <<PROTECTED_SETTINGS
     {
-        "commandToExecute": "powershell.exe -executionpolicy Unrestricted -file ./ConfigureRemotingForAnsible.ps1 -ForceNewSSLCert"
+        "commandToExecute": "powershell.exe -executionpolicy Unrestricted -file ./ConfigureRemotingForAnsible.ps1"
     }
     PROTECTED_SETTINGS
 
