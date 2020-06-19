@@ -11,6 +11,7 @@ pipeline {
        steps {
            sh '/usr/local/bin/packer validate packer.json'
 	   sh '/usr/local/bin/packer build packer.json'
+	   sleep 600 // seconds   
        	      }
      			}
 	  
