@@ -292,7 +292,7 @@ storage_image_reference {
         agent       = false # ----> AGENT PARAMETER ADDED
     }
       inline = [         
-          "powershell.exe -ExecutionPolicy Bypass ./ConfigureRemotingForAnsible.ps1"
+          "./ConfigureRemotingForAnsible.ps1"
       ]
   }
   }
