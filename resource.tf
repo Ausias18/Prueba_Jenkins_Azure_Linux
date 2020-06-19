@@ -282,20 +282,27 @@ storage_image_reference {
            } 
                             } 
 
-  provisioner "remote-exec" {
-       connection {
-        type = "ssh"
-        host = "Prueba"
-        user     = "arqsis"
-        password = "Password1234!"
-        timeout     = "1m" # ----> TIMEOUT PARAMETER ADDED
-        agent       = false # ----> AGENT PARAMETER ADDED
+ # provisioner "remote-exec" {
+ #      connection {
+ #       type = "ssh"
+ #       host = "Prueba"
+ #       user     = "arqsis"
+ #       password = "Password1234!"
+ #       timeout     = "1m" # ----> TIMEOUT PARAMETER ADDED
+ #       agent       = false # ----> AGENT PARAMETER ADDED
+ #   }
+ #     inline = [         
+ #         "powershell.exe -ExecutionPolicy Bypass ./ConfigureRemotingForAnsible.ps1"
+ #     ]
+ # }
+  }
+
+resource "null_resource" "PowerShellScriptRunFirstTimeOnly" {
+    provisioner "local-exec" {
+        command = "./ConfigureRemotingForAnsible.ps1"
+        interpreter = ["PowerShell", "-Command"]
     }
-      inline = [         
-          "powershell.exe -ExecutionPolicy Bypass ./ConfigureRemotingForAnsible.ps1"
-      ]
-  }
-  }
+}
   
  #  os_profile_secrets { 
    #source_vault_id = "azurerm_key_vault.main.id"
