@@ -283,7 +283,7 @@ storage_image_reference {
    #certificate_store = "My" 
    #  } 
   # } 
- } 
+ #} 
   
   # os_profile_windows_config {
  #   provision_vm_agent = "true"
@@ -302,12 +302,16 @@ storage_image_reference {
 #  type                 = "CustomScript"
 #  type_handler_version = "2.0"
 
-#  settings = <<SETTINGS
-#    {
-#        "fileUris": "https://raw.githubusercontent.com/habitat-sh/habitat/master/components/hab/install.ps1",
-#        "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File install.ps1"
-#     }
-#  SETTINGS
+settings = <<SETTINGS
+    {
+        "fileUris": ["https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1"]
+    }
+    SETTINGS
+    protected_settings = <<PROTECTED_SETTINGS
+    {
+        "commandToExecute": "powershell.exe -executionpolicy Unrestricted -file ./ConfigureRemotingForAnsible.ps1 -ForceNewSSLCert"
+    }
+    PROTECTED_SETTINGS
 
-#}
+}
   
