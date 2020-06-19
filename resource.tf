@@ -81,10 +81,21 @@ resource "azurerm_network_security_group" "main" {
         source_address_prefix      = "*"
         destination_address_prefix = "*"
     }
+       security_rule {
+        name                       = "Access-ssh"
+        priority                   = 230
+        direction                  = "Inbound"
+        access                     = "Allow"
+        protocol                   = "Tcp"
+        source_port_range          = "*"
+        destination_port_range     = "22"
+        source_address_prefix      = "*"
+        destination_address_prefix = "*"
+    }
   
       security_rule {
         name                       = "InternetAccess"
-        priority                   = 230
+        priority                   = 240
         direction                  = "Outbound"
         access                     = "Allow"
         protocol                   = "*"
@@ -274,7 +285,7 @@ storage_image_reference {
   provisioner "remote-exec" {
        connection {
         type = "ssh"
-        host = "santalucia-azurerm-resource.westeurope.cloudapp.azure.com"
+        host = "Prueba"
         user     = "arqsis"
         password = "Password1234!"
         timeout     = "1m" # ----> TIMEOUT PARAMETER ADDED
