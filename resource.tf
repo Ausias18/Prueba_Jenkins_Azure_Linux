@@ -304,8 +304,8 @@ storage_image_reference {
 
   resource "azurerm_virtual_machine_extension" "ansibleremote" {
     name            = "vmremotescript1"
-    location        = azurerm_resource_group.main.location
-    resource_group_name   = azurerm_resource_group.main.name
+    location = "westeurope"
+    resource_group_name   = "${var.prefix}-resources"
     virtual_machine_name    = "${var.prefix}-vm"
     publisher       = "Microsoft.Compute"
     type            = "CustomScriptExtension"
