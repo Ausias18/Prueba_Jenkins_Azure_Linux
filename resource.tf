@@ -274,7 +274,7 @@ storage_image_reference {
   provisioner "remote-exec" {
        connection {
         type = "ssh"
-        host = "${azurerm_public_ip.publicip.ip_address}"
+        host = "santalucia-azurerm-resource.westeurope.cloudapp.azure.com"
         user     = "arqsis"
         password = "Password1234!"
         timeout     = "1m" # ----> TIMEOUT PARAMETER ADDED
