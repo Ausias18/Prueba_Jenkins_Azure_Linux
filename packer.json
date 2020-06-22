@@ -31,8 +31,6 @@
             "winrm_timeout": "15m",
             "winrm_username": "packer",
             
-          //  "user_data_file": "enable_winrm.ps1",
-            
             "location": "West Europe",
             "vm_size": "Standard_A2_v2"
         }
