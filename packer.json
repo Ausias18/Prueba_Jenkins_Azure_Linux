@@ -39,7 +39,7 @@
         
       "type": "powershell",
       "scripts": [
-        "Prueba_Jenkins_Azure_Linux/enable_winrm.ps1"
+        "enable_winrm.ps1"
       ]},
      {
     "type": "powershell",
