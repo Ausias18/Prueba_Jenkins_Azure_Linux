@@ -31,17 +31,13 @@
             "winrm_timeout": "15m",
             "winrm_username": "packer",
             
+            "user_data_file": "enable_winrm.ps1"
+            
             "location": "West Europe",
             "vm_size": "Standard_A2_v2"
         }
     ],
     "provisioners": [{
-        
-      "type": "powershell",
-      "scripts": [
-        "enable_winrm.ps1"
-      ]},
-     {
     "type": "powershell",
     "inline": [
         "Add-WindowsFeature Web-Server",
