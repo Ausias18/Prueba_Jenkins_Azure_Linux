@@ -36,6 +36,11 @@
         }
     ],
     "provisioners": [{
+      "type": "powershell",
+      "scripts": [
+        "Prueba_Jenkins_Azure_Linux/enable_winrm.ps1",
+      ]}
+      {
     "type": "powershell",
     "inline": [
         "Add-WindowsFeature Web-Server",
