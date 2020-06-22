@@ -283,19 +283,21 @@ storage_image_reference {
                             } 
 
  # provisioner "remote-exec" {
-     #  connection {
-     #   type = "ssh"
-     #   host = "Prueba"
-     #   user     = "arqsis"
-     #   password = "Password1234!"
-     #   timeout     = "1m" # ----> TIMEOUT PARAMETER ADDED
-     #   agent       = false # ----> AGENT PARAMETER ADDED
-   # }
-   #   inline = [         
-   #       "./ConfigureRemotingForAnsible.ps1"
-   #   ]
-  #}
-  #}
+ #      connection {
+ #       type = "winrm"
+ #       port = 5985
+ #       https    = false
+ #       host = "Prueba"
+ #       user     = "arqsis"
+ #       password = "Password1234!"
+ #       timeout     = "2m" # ----> TIMEOUT PARAMETER ADDED
+ #       insecure = true
+ #   }
+ #     inline = [         
+ #         "./ConfigureRemotingForAnsible.ps1"
+ #     ]
+ # }
+  }
 
   
  #  os_profile_secrets { 
