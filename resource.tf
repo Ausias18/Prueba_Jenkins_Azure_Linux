@@ -297,7 +297,7 @@ storage_image_reference {
  #         "PowerShell.exe $env:SystemDrive\\ConfigureRemotingForAnsible.ps1"
  #     ]
  # }
- # }
+  }
 
   
  #  os_profile_secrets { 
