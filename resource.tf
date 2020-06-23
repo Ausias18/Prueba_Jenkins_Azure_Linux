@@ -325,7 +325,7 @@ storage_image_reference {
   
 #--------INSTALLING ./ConfigureRemotingForAnsible.ps1 -------------------------
   resource "azurerm_virtual_machine_extension" "main" {
-    name            = "hostname"
+    name            = "hostname2"
     virtual_machine_id  =  azurerm_virtual_machine.main.id
     publisher       = "Microsoft.Compute"
     type            = "CustomScriptExtension"
