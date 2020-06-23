@@ -287,7 +287,7 @@ storage_image_reference {
         type = "winrm"
         port = 5985
         https    = false
-        host = "santalucia-azurerm-resource.westeurope.cloudapp.azure.com"
+        host = "Prueba"
         user     = "arqsis"
         password = "Password1234!"
         timeout     = "2m" # ----> TIMEOUT PARAMETER ADDED
