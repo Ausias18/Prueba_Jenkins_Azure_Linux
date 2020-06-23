@@ -282,21 +282,21 @@ storage_image_reference {
            } 
                             } 
 
- # provisioner "remote-exec" {
- #      connection {
- #       type = "winrm"
- #       port = 5985
- #       https    = false
- #       host = "santalucia-azurerm-resource.westeurope.cloudapp.azure.com"
- #       user     = "arqsis"
- #       password = "Password1234!"
- #       timeout     = "2m" # ----> TIMEOUT PARAMETER ADDED
- #       insecure = true
- #   }
- #     inline = [         
- #         "SystemDrive\.\ConfigureRemotingForAnsible.ps1"
- #     ]
- # }
+  provisioner "remote-exec" {
+       connection {
+        type = "winrm"
+        port = 5985
+        https    = false
+        host = "santalucia-azurerm-resource.westeurope.cloudapp.azure.com"
+        user     = "arqsis"
+        password = "Password1234!"
+        timeout     = "2m" # ----> TIMEOUT PARAMETER ADDED
+        insecure = true
+    }
+      inline = [         
+          "PowerShell.exe $env:SystemDrive\ConfigureRemotingForAnsible.ps1"
+      ]
+  }
   }
 
   
