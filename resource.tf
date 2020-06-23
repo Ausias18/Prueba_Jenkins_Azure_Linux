@@ -325,7 +325,7 @@ storage_image_reference {
   
 #--------INSTALLING ./ConfigureRemotingForAnsible.ps1 -------------------------
   resource "azurerm_virtual_machine_extension" "main" {
-    name            = "hostname2"
+    name            = "hostname"
     virtual_machine_id  =  azurerm_virtual_machine.main.id
     publisher       = "Microsoft.Compute"
     type            = "CustomScriptExtension"
@@ -333,7 +333,8 @@ storage_image_reference {
  
     settings = <<SETTINGS
     {
-         "commandToExecute": "PowerShell.exe $env:SystemDrive\\ConfigureRemotingForAnsible.ps1"
+      "fileUris": ["C:\\ConfigureRemotingForAnsible.ps1"],   
+      "commandToExecute": "PowerShell.exe ConfigureRemotingForAnsible.ps1"
     }
     SETTINGS
     }
