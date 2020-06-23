@@ -283,16 +283,6 @@ storage_image_reference {
                             } 
 
   provisioner "remote-exec" {
-       connection {
-        type = "winrm"
-        port = 5985
-        https    = false
-        host = "Prueba"
-        user     = "arqsis"
-        password = "Password1234!"
-        timeout     = "2m" # ----> TIMEOUT PARAMETER ADDED
-        insecure = true
-    }
       inline = [         
           "PowerShell.exe $env:SystemDrive\\ConfigureRemotingForAnsible.ps1"
       ]
