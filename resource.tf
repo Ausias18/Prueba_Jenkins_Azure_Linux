@@ -288,7 +288,7 @@ storage_image_reference {
         port = 5985
         https    = false
         insecure = true
-        host = azurerm_network_interface.main
+        host = azurerm_public_ip.main.id
         user     = "arqsis"
         password = "Password1234!"
         timeout     = "2m" # ----> TIMEOUT PARAMETER ADDED
