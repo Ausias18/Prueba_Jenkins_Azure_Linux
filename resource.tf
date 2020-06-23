@@ -273,7 +273,6 @@ storage_image_reference {
  
   os_profile_windows_config { 
      provision_vm_agent = true 
- 
      winrm {
        protocol = "http"
       # protocol        = "https" 
@@ -325,17 +324,22 @@ storage_image_reference {
   
 #--------INSTALLING ./ConfigureRemotingForAnsible.ps1 -------------------------
   resource "azurerm_virtual_machine_extension" "main" {
-    name            = "hostname2"
+    name            = "hostname"
     virtual_machine_id  =  azurerm_virtual_machine.main.id
     publisher       = "Microsoft.Compute"
     type            = "CustomScriptExtension"
-    type_handler_version    = "1.10"
+    type_handler_version    = "1.9"
  
     settings = <<SETTINGS
     {  
-      "commandToExecute": "C:\\.\\ConfigureRemotingForAnsible.ps1"
+    "fileUris": ["C:\\ConfigureRemotingForAnsible.ps1"]  
     }
     SETTINGS
+    protected_settings = <<PROTECTED_SETTINGS
+    {
+        "commandToExecute": "powershell.exe -executionpolicy Unrestricted -file ./ConfigureRemotingForAnsible.ps1"
+    }
+    PROTECTED_SETTINGS
     }
 #-----------------------------------------------------------------------------
 
