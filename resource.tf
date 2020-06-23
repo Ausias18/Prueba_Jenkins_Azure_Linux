@@ -287,12 +287,11 @@ storage_image_reference {
         type = "winrm"
         port = 5985
         https    = false
-        host = "${self.ip_address}"
+        insecure = true
+        host = azurerm_network_interface.main
         user     = "arqsis"
         password = "Password1234!"
         timeout     = "2m" # ----> TIMEOUT PARAMETER ADDED
-        insecure = true
-        wait_for_guest_net = true
     }
       inline = [         
           "PowerShell.exe $env:SystemDrive\\ConfigureRemotingForAnsible.ps1"
