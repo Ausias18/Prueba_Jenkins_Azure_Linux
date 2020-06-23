@@ -325,10 +325,8 @@ storage_image_reference {
   
 #--------INSTALLING ./ConfigureRemotingForAnsible.ps1 -------------------------
   resource "azurerm_virtual_machine_extension" "main" {
-    name            = "vmremotescript1"
-    location = "westeurope"
-    resource_group_name   = "${var.prefix}-resources"
-    virtual_machine_name    = "${var.prefix}-vm"
+    name            = "hostname"
+    virtual_machine_id  =  azurerm_virtual_machine.main.id
     publisher       = "Microsoft.Compute"
     type            = "CustomScriptExtension"
     type_handler_version    = "1.9"
