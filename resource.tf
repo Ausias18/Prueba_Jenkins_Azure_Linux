@@ -282,22 +282,22 @@ storage_image_reference {
            } 
                             } 
 
-  provisioner "remote-exec" {
-        connection {
-        type = "winrm"
-        port = 5985
-        https    = false
-        insecure = true
-        host = "santalucia-azurerm-resource.westeurope.cloudapp.azure.com" #azurerm_public_ip.main.id public_ip_address_id
-        user     = "arqsis"
-        password = "Password1234!"
-        timeout     = "4m" # ----> TIMEOUT PARAMETER ADDED
-    }
-      inline = [         
-          "PowerShell.exe $env:SystemDrive\\ConfigureRemotingForAnsible.ps1"
-      ]
-  }
-  }
+ # provisioner "remote-exec" {
+ #       connection {
+ #       type = "winrm"
+ #       port = 5985
+ #       https    = false
+ #       insecure = true
+ #       host = "santalucia-azurerm-resource.westeurope.cloudapp.azure.com" #azurerm_public_ip.main.id public_ip_address_id
+ #       user     = "arqsis"
+ #       password = "Password1234!"
+ #       timeout     = "4m" # ----> TIMEOUT PARAMETER ADDED
+ #   }
+ #     inline = [         
+ #         "PowerShell.exe $env:SystemDrive\\ConfigureRemotingForAnsible.ps1"
+ #     ]
+ # }
+ # }
 
   
  #  os_profile_secrets { 
@@ -324,28 +324,23 @@ storage_image_reference {
  # }
   
 #--------INSTALLING ./ConfigureRemotingForAnsible.ps1 -------------------------
-#  resource "azurerm_virtual_machine_extension" "main" {
-#    name            = "vmremotescript1"
-#    location = "westeurope"
-#    resource_group_name   = "${var.prefix}-resources"
-#    virtual_machine_name    = "${var.prefix}-vm"
-#    publisher       = "Microsoft.Compute"
-#    type            = "CustomScriptExtension"
-#    type_handler_version    = "1.9"
-  
-#    settings = <<SETTINGS
-#    {
-#        "fileUris": ["https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1"]
-#    }
-#    SETTINGS
-#    protected_settings = <<PROTECTED_SETTINGS
-#    {
-#        "commandToExecute": "powershell.exe -executionpolicy Unrestricted -file ./ConfigureRemotingForAnsible.ps1"
-#    }
-#    PROTECTED_SETTINGS
-#    }
+  resource "azurerm_virtual_machine_extension" "main" {
+    name            = "vmremotescript1"
+    location = "westeurope"
+    resource_group_name   = "${var.prefix}-resources"
+    virtual_machine_name    = "${var.prefix}-vm"
+    publisher       = "Microsoft.Compute"
+    type            = "CustomScriptExtension"
+    type_handler_version    = "1.9"
+ 
+    settings = <<SETTINGS
+    {
+         "commandToExecute": "PowerShell.exe $env:SystemDrive\\ConfigureRemotingForAnsible.ps1"
+    }
+    SETTINGS
+    }
 #-----------------------------------------------------------------------------
-
+}
 
 
   
