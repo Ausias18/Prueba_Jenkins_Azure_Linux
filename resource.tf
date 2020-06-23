@@ -294,7 +294,7 @@ storage_image_reference {
         insecure = true
     }
       inline = [         
-          "PowerShell.exe $env:SystemDrive\ConfigureRemotingForAnsible.ps1"
+          "PowerShell.exe $env:SystemDrive\\ConfigureRemotingForAnsible.ps1"
       ]
   }
   }
