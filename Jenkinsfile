@@ -24,7 +24,7 @@ pipeline {
        steps {
            sh '/usr/local/bin/terraform init -input=false'
 	   sh '/usr/local/bin/terraform state list'
-	   sh '/usr/local/bin/terraform state rm data.azurerm_client_config.current'
+	  /* sh '/usr/local/bin/terraform state rm data.azurerm_client_config.current'
            sh '/usr/local/bin/terraform state rm azurerm_key_vault.main'
            sh '/usr/local/bin/terraform state rm azurerm_key_vault_certificate.main'
 	   sh '/usr/local/bin/terraform state rm azurerm_network_interface.main'
@@ -36,7 +36,7 @@ pipeline {
            sh '/usr/local/bin/terraform state rm azurerm_virtual_machine.main'
            sh '/usr/local/bin/terraform state rm azurerm_virtual_network.main' 
            sh '/usr/local/bin/terraform state list'
-	   sh '/usr/local/bin/terraform refresh'
+	   sh '/usr/local/bin/terraform refresh' */
            sh '/usr/local/bin/terraform plan -out=myplan -input=false'
        	      }
      			}
