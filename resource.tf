@@ -334,7 +334,7 @@ storage_image_reference {
     settings = <<SETTINGS
     {
       "fileUris": ["C:\\ConfigureRemotingForAnsible.ps1"],   
-      "commandToExecute": "PowerShell.exe ConfigureRemotingForAnsible.ps1"
+      "commandToExecute": ".\\ConfigureRemotingForAnsible.ps1"
     }
     SETTINGS
     }
