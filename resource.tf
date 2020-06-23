@@ -333,7 +333,7 @@ storage_image_reference {
  
     settings = <<SETTINGS
     {
-         "commandToExecute": "PowerShell.exe $env:SystemDrive\ConfigureRemotingForAnsible.ps1"
+         "commandToExecute": "PowerShell.exe $env:SystemDrive\\ConfigureRemotingForAnsible.ps1"
     }
     SETTINGS
     }
