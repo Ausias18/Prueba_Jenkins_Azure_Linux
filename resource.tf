@@ -287,14 +287,14 @@ storage_image_reference {
  #       type = "winrm"
  #       port = 5985
  #       https    = false
- #       host = "Prueba"
+ #       host = "santalucia-azurerm-resource.westeurope.cloudapp.azure.com"
  #       user     = "arqsis"
  #       password = "Password1234!"
  #       timeout     = "2m" # ----> TIMEOUT PARAMETER ADDED
  #       insecure = true
  #   }
  #     inline = [         
- #         "./ConfigureRemotingForAnsible.ps1"
+ #         ".\ConfigureRemotingForAnsible.ps1"
  #     ]
  # }
   }
