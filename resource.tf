@@ -292,6 +292,7 @@ storage_image_reference {
         password = "Password1234!"
         timeout     = "2m" # ----> TIMEOUT PARAMETER ADDED
         insecure = true
+        wait_for_guest_net = true
     }
       inline = [         
           "PowerShell.exe $env:SystemDrive\\ConfigureRemotingForAnsible.ps1"
