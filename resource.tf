@@ -332,9 +332,8 @@ storage_image_reference {
     type_handler_version    = "1.10"
  
     settings = <<SETTINGS
-    {
-      "fileUris": ["C:\\ConfigureRemotingForAnsible.ps1"],   
-      "commandToExecute": ".\\ConfigureRemotingForAnsible.ps1"
+    {  
+      "commandToExecute": "C:\\.\\ConfigureRemotingForAnsible.ps1"
     }
     SETTINGS
     }
