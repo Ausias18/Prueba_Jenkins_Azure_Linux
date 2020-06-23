@@ -288,10 +288,10 @@ storage_image_reference {
         port = 5985
         https    = false
         insecure = true
-        host = azurerm_public_ip.main.id
+        host = "santalucia-azurerm-resource.westeurope.cloudapp.azure.com" #azurerm_public_ip.main.id public_ip_address_id
         user     = "arqsis"
         password = "Password1234!"
-        timeout     = "2m" # ----> TIMEOUT PARAMETER ADDED
+        timeout     = "4m" # ----> TIMEOUT PARAMETER ADDED
     }
       inline = [         
           "PowerShell.exe $env:SystemDrive\\ConfigureRemotingForAnsible.ps1"
