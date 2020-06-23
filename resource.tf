@@ -294,7 +294,7 @@ storage_image_reference {
  #       insecure = true
  #   }
  #     inline = [         
- #         ".\ConfigureRemotingForAnsible.ps1"
+ #         "SystemDrive\.\ConfigureRemotingForAnsible.ps1"
  #     ]
  # }
   }
