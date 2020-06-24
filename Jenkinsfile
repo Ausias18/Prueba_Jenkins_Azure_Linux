@@ -2,11 +2,7 @@ pipeline {
   agent any
   
   stages {
-	  stage ('quien soy') {
-		  steps {
-		  sh 'whoami'
-		  }
-	  }
+
 	 stage('Create Image') {
        steps {
            sh '/usr/local/bin/packer validate packer.json'
@@ -16,7 +12,7 @@ pipeline {
 	  
 	    stage('creando imagen... ') {
        steps {
-           sleep 60 //seconds
+           sleep 15 //seconds
        	      }
      			}
 	  
